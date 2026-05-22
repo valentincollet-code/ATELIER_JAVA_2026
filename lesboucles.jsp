@@ -46,9 +46,20 @@
 <% } %>
 
 <h2>Exercice 2 : Triangle rectangle gauche</h2>
-<p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
-<p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>*</br>**</br>***</br>****</br>*****</p>
+<% if (valeur != null && !valeur.isEmpty()) { %>
+    <p>
+    <%-- Boucle externe : gère les lignes de 1 jusqu'à cpt --%>
+    <% for (int i = 1; i <= cpt; i++) { %>
+        
+        <%-- Boucle interne : s'arrête à 'i' pour afficher le bon nombre d'étoiles --%>
+        <% for (int j = 1; j <= i; j++) { %>
+            <%= "*" %>
+        <% } %>
+        
+        <br/>
+    <% } %>
+    </p>
+<% } %>
 
 <h2>Exercice 3 : Triangle rectangle inversé</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
