@@ -268,8 +268,16 @@
         }
 
         .line-break {
+            width: 100%;
             height: 0;
-            margin: 15px 0;
+            margin: 8px 0;
+        }
+
+        .airplane-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: nowrap;
         }
 
         @media (max-width: 768px) {
@@ -326,12 +334,13 @@
             <div class="exercise-section">
                 <h2>Exercice 2 : Le carré d'avions</h2>
                 <p>Ecrire le code afin de produire un carré d'avions</p>
-                <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px;">
+                <div class="result-box" style="flex-direction: column; align-items: flex-start; height: auto; padding: 20px; background: transparent; border: none;">
                     <% for (int i = 1; i <= cpt; i++) { %>
-                        <% for (int j = 1; j <= cpt; j++) { %>
-                            <span class="airplane">✈️</span>
-                        <% } %>
-                        <div class="line-break"></div>
+                        <div class="airplane-row">
+                            <% for (int j = 1; j <= cpt; j++) { %>
+                                <span class="airplane">✈️</span>
+                            <% } %>
+                        </div>
                     <% } %>
                 </div>
             </div>
@@ -339,12 +348,13 @@
             <div class="exercise-section">
                 <h2>Exercice 3 : Triangle rectangle gauche</h2>
                 <p>Créer un triangle qui s'agrandit ligne par ligne</p>
-                <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px;">
+                <div class="result-box" style="flex-direction: column; align-items: flex-start; height: auto; padding: 20px; background: transparent; border: none;">
                     <% for (int i = 1; i <= cpt; i++) { %>
-                        <% for (int j = 1; j <= i; j++) { %>
-                            <span class="airplane">✈️</span>
-                        <% } %>
-                        <div class="line-break"></div>
+                        <div class="airplane-row">
+                            <% for (int j = 1; j <= i; j++) { %>
+                                <span class="airplane">✈️</span>
+                            <% } %>
+                        </div>
                     <% } %>
                 </div>
             </div>
@@ -352,12 +362,13 @@
             <div class="exercise-section">
                 <h2>Exercice 4 : Triangle rectangle inversé</h2>
                 <p>Triangle qui rétrécit ligne par ligne</p>
-                <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px;">
+                <div class="result-box" style="flex-direction: column; align-items: flex-start; height: auto; padding: 20px; background: transparent; border: none;">
                     <% for (int i = cpt; i >= 1; i--) { %>
-                        <% for (int j = 1; j <= i; j++) { %>
-                            <span class="airplane">✈️</span>
-                        <% } %>
-                        <div class="line-break"></div>
+                        <div class="airplane-row">
+                            <% for (int j = 1; j <= i; j++) { %>
+                                <span class="airplane">✈️</span>
+                            <% } %>
+                        </div>
                     <% } %>
                 </div>
             </div>
@@ -365,15 +376,13 @@
             <div class="exercise-section">
                 <h2>Exercice 5 : Triangle rectangle aligné droite</h2>
                 <p>Triangle aligné sur la droite avec espaces</p>
-                <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px; font-family: 'Courier New', monospace;">
+                <div class="result-box" style="flex-direction: column; align-items: flex-end; height: auto; padding: 20px; background: transparent; border: none;">
                     <% for (int i = 1; i <= cpt; i++) { %>
-                        <% for (int j = 1; j <= (cpt - i); j++) { %>
-                            <span style="margin-right: 8px;">·</span>
-                        <% } %>
-                        <% for (int k = 1; k <= i; k++) { %>
-                            <span class="airplane">✈️</span>
-                        <% } %>
-                        <div class="line-break"></div>
+                        <div class="airplane-row">
+                            <% for (int k = 1; k <= i; k++) { %>
+                                <span class="airplane">✈️</span>
+                            <% } %>
+                        </div>
                     <% } %>
                 </div>
             </div>
@@ -381,9 +390,9 @@
             <div class="exercise-section">
                 <h2>Exercice 6 : Triangle isocèle</h2>
                 <p>Triangle centré en haut</p>
-                <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px; justify-content: center;">
+                <div class="result-box" style="flex-direction: column; align-items: center; height: auto; padding: 20px; background: transparent; border: none;">
                     <% for (int i = 1; i <= cpt; i++) { %>
-                        <div style="width: 100%; text-align: center; margin-bottom: 5px;">
+                        <div class="airplane-row">
                             <% for (int k = 1; k <= i; k++) { %>
                                 <span class="airplane">✈️</span>
                             <% } %>
@@ -395,16 +404,16 @@
             <div class="exercise-section">
                 <h2>Exercice 7 : Le demi losange</h2>
                 <p>Forme de losange</p>
-                <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px; justify-content: center;">
+                <div class="result-box" style="flex-direction: column; align-items: center; height: auto; padding: 20px; background: transparent; border: none;">
                     <% for (int i = 1; i <= cpt; i++) { %>
-                        <div style="width: 100%; text-align: center; margin-bottom: 5px;">
+                        <div class="airplane-row">
                             <% for (int k = 1; k <= i; k++) { %>
                                 <span class="airplane">✈️</span>
                             <% } %>
                         </div>
                     <% } %>
                     <% for (int i = cpt - 1; i >= 1; i--) { %>
-                        <div style="width: 100%; text-align: center; margin-bottom: 5px;">
+                        <div class="airplane-row">
                             <% for (int k = 1; k <= i; k++) { %>
                                 <span class="airplane">✈️</span>
                             <% } %>
