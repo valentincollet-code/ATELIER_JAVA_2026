@@ -65,17 +65,52 @@
 </p>
 
 <h2>Exercice 4 : Afficher une lettre sur deux</h2>
-<p>Ecrire le programme pour afficher seulement une lettre sur deux de votre texte </br>
-Exemple : L'hiver sera pluvieux</br>
-Lhvrsr lvex</p>
+<p>
+<% 
+    for (int i = 0; i < chaine.length(); i += 2) { 
+%>
+    <%= chaine.charAt(i) %>
+<% 
+    } 
+%>
+</p>
 
 <h2>Exercice 5 : La phrase en verlant</h2>
-<p>Ecrire le programme afin d'afficher le texte en verlant </br>
-Exemple : L'hiver sera pluvieux</br>
-xueivulp ares revih'l</p>
+<p>
+<% 
+    for (int i = chaine.length() - 1; i >= 0; i--) { 
+%>
+    <%= chaine.charAt(i) %>
+<% 
+    } 
+%>
+</p>
 
 <h2>Exercice 6 : Consonnes et voyelles</h2>
-<p>Ecrire le programme afin de compter les consonnes et les voyelles dans votre texte</p>
+<% 
+    int nbVoyelles = 0;
+    int nbConsonnes = 0;
+    // On passe tout en minuscules pour ne pas avoir à gérer les majuscules
+    String texteMin = chaine.toLowerCase(); 
+
+    for (int i = 0; i < texteMin.length(); i++) {
+        char c = texteMin.charAt(i);
+        
+        // On s'assure que c'est bien une lettre de l'alphabet
+        if (c >= 'a' && c <= 'z') {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y') {
+                nbVoyelles++;
+            } else {
+                nbConsonnes++;
+            }
+        }
+    }
+%>
+<p>Dans votre texte, il y a :</p>
+<ul>
+    <li><strong><%= nbVoyelles %></strong> voyelle(s)</li>
+    <li><strong><%= nbConsonnes %></strong> consonne(s)</li>
+</ul>
 
 <% } %>
 <p><a href="index.html">Retour au sommaire</a></p>
