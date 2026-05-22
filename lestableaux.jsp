@@ -276,6 +276,14 @@
             color: #ffd700;
         }
 
+        .translation {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            display: block;
+            margin-top: 3px;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -300,14 +308,17 @@
 
         <header>
             <h1>📦 Exercices sur les Tableaux</h1>
+            <p class="translation">📦 Ejercicios sobre Arreglos</p>
             <p>Maîtrisez les structures de données</p>
+            <p class="translation">Domina las estructuras de datos</p>
         </header>
 
         <div class="input-section">
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="chaine">Saisir au minimum 3 nombres (séparés par des espaces) :</label>
-                    <input type="text" id="chaine" name="chaine" placeholder="Exemple: 10 25 15 30" />
+                    <p class="translation">Ingresa al menos 3 números (separados por espacios):</p>
+                    <input type="text" id="chaine" name="chaine" placeholder="Ejemplo: 10 25 15 30" />
                 </div>
                 <button type="submit" class="btn-submit">📊 Analyser</button>
             </form>

@@ -264,6 +264,14 @@
             color: #00ff88;
         }
 
+        .translation {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            display: block;
+            margin-top: 3px;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -288,13 +296,16 @@
 
         <header>
             <h1>📝 Exercices sur les Chaînes</h1>
+            <p class="translation">📝 Ejercicios sobre Cadenas</p>
             <p>Explorez la manipulation de texte en Java</p>
+            <p class="translation">Explora la manipulación de texto en Java</p>
         </header>
 
         <div class="input-section">
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="chaine">Saisir une chaîne de caractères (minimum 6) :</label>
+                    <p class="translation">Ingresa una cadena de caracteres (mínimo 6):</p>
                     <input type="text" id="chaine" name="chaine" placeholder="Exemple: Bonjour" />
                 </div>
                 <button type="submit" class="btn-submit">✍️ Analyser</button>

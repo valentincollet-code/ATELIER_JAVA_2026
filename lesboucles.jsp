@@ -280,6 +280,14 @@
             flex-wrap: nowrap;
         }
 
+        .translation {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            display: block;
+            margin-top: 3px;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -304,13 +312,16 @@
 
         <header>
             <h1>🔄 Exercices sur les Boucles</h1>
+            <p class="translation">🔄 Ejercicios sobre Bucles</p>
             <p>Maîtrisez les boucles en créant des patterns</p>
+            <p class="translation">Domina los bucles creando patrones</p>
         </header>
 
         <div class="input-section">
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="inputValeur">Saisir le nombre d'étoiles (2-20) :</label>
+                    <p class="translation">Ingresa el número de aviones (2-20):</p>
                     <input type="text" id="inputValeur" name="valeur" placeholder="Exemple: 5" />
                 </div>
                 <button type="submit" class="btn-submit">✨ Afficher les résultats</button>

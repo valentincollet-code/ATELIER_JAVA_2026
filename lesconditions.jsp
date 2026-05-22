@@ -252,6 +252,14 @@
             color: #ffc107;
         }
 
+        .translation {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            display: block;
+            margin-top: 3px;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -282,7 +290,9 @@
 
         <header>
             <h1>❓ Exercices sur les Conditions</h1>
+            <p class="translation">❓ Ejercicios sobre Condiciones</p>
             <p>Développez votre logique conditionnelle</p>
+            <p class="translation">Desarrolla tu lógica condicional</p>
         </header>
 
         <div class="input-section">
@@ -290,10 +300,12 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="valeur1">Valeur 1 :</label>
+                        <p class="translation">Valor 1:</p>
                         <input type="text" id="valeur1" name="valeur1" placeholder="Ex: 10" />
                     </div>
                     <div class="form-group">
                         <label for="valeur2">Valeur 2 :</label>
+                        <p class="translation">Valor 2:</p>
                         <input type="text" id="valeur2" name="valeur2" placeholder="Ex: 20" />
                     </div>
                 </div>
