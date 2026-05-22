@@ -230,22 +230,41 @@
             overflow-x: auto;
         }
 
-        .star {
+        .airplane {
             display: inline-block;
-            color: #ffd700;
-            font-size: 1.5rem;
-            margin-right: 8px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-            animation: twinkle 2s infinite;
+            font-size: 2rem;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            animation: fly 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 8px rgba(255, 157, 251, 0.6));
         }
 
-        .star:nth-child(odd) { animation-delay: 0s; }
-        .star:nth-child(even) { animation-delay: 0.3s; }
-        .star:nth-child(3n) { animation-delay: 0.6s; }
+        .airplane:nth-child(1) { animation-delay: 0s; }
+        .airplane:nth-child(2) { animation-delay: 0.2s; }
+        .airplane:nth-child(3) { animation-delay: 0.4s; }
+        .airplane:nth-child(4) { animation-delay: 0.6s; }
+        .airplane:nth-child(5) { animation-delay: 0.8s; }
+        .airplane:nth-child(6) { animation-delay: 1s; }
+        .airplane:nth-child(7) { animation-delay: 1.2s; }
+        .airplane:nth-child(8) { animation-delay: 1.4s; }
+        .airplane:nth-child(9) { animation-delay: 1.6s; }
+        .airplane:nth-child(10) { animation-delay: 1.8s; }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        @keyframes fly {
+            0%, 100% { 
+                transform: translateY(0px) scaleX(1);
+                opacity: 1;
+            }
+            25% { 
+                transform: translateY(-8px) scaleX(1.1);
+            }
+            50% { 
+                transform: translateY(-15px) scaleX(1);
+                opacity: 0.8;
+            }
+            75% { 
+                transform: translateY(-8px) scaleX(0.95);
+            }
         }
 
         .line-break {
@@ -295,22 +314,22 @@
             <% int cpt = Integer.parseInt(valeur); %>
 
             <div class="exercise-section">
-                <h2>Exercice 1 : La ligne d'étoiles</h2>
-                <p>Affichage simple d'une ligne d'étoiles</p>
+                <h2>Exercice 1 : La ligne d'avions</h2>
+                <p>Affichage simple d'une ligne d'avions</p>
                 <div class="result-box">
                     <% for (int i = 1; i <= cpt; i++) { %>
-                        <span class="star">★</span>
+                        <span class="airplane">✈️</span>
                     <% } %>
                 </div>
             </div>
 
             <div class="exercise-section">
-                <h2>Exercice 2 : Le carré d'étoiles</h2>
-                <p>Ecrire le code afin de produire un carré d'étoile</p>
+                <h2>Exercice 2 : Le carré d'avions</h2>
+                <p>Ecrire le code afin de produire un carré d'avions</p>
                 <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px;">
                     <% for (int i = 1; i <= cpt; i++) { %>
                         <% for (int j = 1; j <= cpt; j++) { %>
-                            <span class="star">★</span>
+                            <span class="airplane">✈️</span>
                         <% } %>
                         <div class="line-break"></div>
                     <% } %>
@@ -323,7 +342,7 @@
                 <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px;">
                     <% for (int i = 1; i <= cpt; i++) { %>
                         <% for (int j = 1; j <= i; j++) { %>
-                            <span class="star">★</span>
+                            <span class="airplane">✈️</span>
                         <% } %>
                         <div class="line-break"></div>
                     <% } %>
@@ -336,7 +355,7 @@
                 <div class="result-box" style="flex-wrap: wrap; align-items: flex-start; height: auto; padding: 20px;">
                     <% for (int i = cpt; i >= 1; i--) { %>
                         <% for (int j = 1; j <= i; j++) { %>
-                            <span class="star">★</span>
+                            <span class="airplane">✈️</span>
                         <% } %>
                         <div class="line-break"></div>
                     <% } %>
@@ -352,7 +371,7 @@
                             <span style="margin-right: 8px;">·</span>
                         <% } %>
                         <% for (int k = 1; k <= i; k++) { %>
-                            <span class="star">★</span>
+                            <span class="airplane">✈️</span>
                         <% } %>
                         <div class="line-break"></div>
                     <% } %>
@@ -366,7 +385,7 @@
                     <% for (int i = 1; i <= cpt; i++) { %>
                         <div style="width: 100%; text-align: center; margin-bottom: 5px;">
                             <% for (int k = 1; k <= i; k++) { %>
-                                <span class="star">★</span>
+                                <span class="airplane">✈️</span>
                             <% } %>
                         </div>
                     <% } %>
@@ -380,14 +399,14 @@
                     <% for (int i = 1; i <= cpt; i++) { %>
                         <div style="width: 100%; text-align: center; margin-bottom: 5px;">
                             <% for (int k = 1; k <= i; k++) { %>
-                                <span class="star">★</span>
+                                <span class="airplane">✈️</span>
                             <% } %>
                         </div>
                     <% } %>
                     <% for (int i = cpt - 1; i >= 1; i--) { %>
                         <div style="width: 100%; text-align: center; margin-bottom: 5px;">
                             <% for (int k = 1; k <= i; k++) { %>
-                                <span class="star">★</span>
+                                <span class="airplane">✈️</span>
                             <% } %>
                         </div>
                     <% } %>
