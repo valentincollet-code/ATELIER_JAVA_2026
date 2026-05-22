@@ -79,29 +79,88 @@
 
 <h2>Exercice 4 : Triangle rectangle 2</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la droite</p>
-<p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**</br>&nbsp;&nbsp;&nbsp;&nbsp;***</br>&nbsp;&nbsp;****</br>*****</p>
+<% if (valeur != null && !valeur.isEmpty()) { %>
+    <p>
+    <% for (int i = 1; i <= cpt; i++) { %>
+        
+        <%-- 1. Boucle pour les espaces (décroissant) --%>
+        <% for (int j = 1; j <= (cpt - i); j++) { %>
+            <%= "&nbsp;&nbsp;" %>
+        <% } %>
+        
+        <%-- 2. Boucle pour les étoiles (croissant) --%>
+        <% for (int k = 1; k <= i; k++) { %>
+            <%= "*" %>
+        <% } %>
+        
+        <br/>
+    <% } %>
+    </p>
+<% } %>
 
 <h2>Exercice 5 : Triangle isocele</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la droite</p>
-<p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;*</br>&nbsp;&nbsp;&nbsp;**</br>&nbsp;&nbsp;***</br>&nbsp;****</br>*****</p>
+<% if (valeur != null && !valeur.isEmpty()) { %>
+    <p>
+    <% for (int i = 1; i <= cpt; i++) { %>
+        
+        <%-- 1. Boucle pour les espaces (un seul &nbsp; ici) --%>
+        <% for (int j = 1; j <= (cpt - i); j++) { %>
+            <%= "&nbsp;" %>
+        <% } %>
+        
+        <%-- 2. Boucle pour les étoiles --%>
+        <% for (int k = 1; k <= i; k++) { %>
+            <%= "*" %>
+        <% } %>
+        
+        <br/>
+    <% } %>
+    </p>
+<% } %>
 
 <h2>Exercice 6 : Le demi losange</h2>
 <p>Ecrire le code afin de produire un losange</p>
-<p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**</br>&nbsp;&nbsp;&nbsp;&nbsp;***</br>&nbsp;&nbsp;****</br>*****</p>
-<p>*****</br>&nbsp;&nbsp;****</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</p>
+<% if (valeur != null && !valeur.isEmpty()) { %>
+    <p>
+    <%-- PARTIE 1 : Haute et croissante --%>
+    <% for (int i = 1; i <= cpt; i++) { %>
+        <% for (int j = 1; j <= (cpt - i); j++) { %>
+            <%= "&nbsp;&nbsp;" %>
+        <% } %>
+        <% for (int k = 1; k <= i; k++) { %>
+            <%= "*" %>
+        <% } %>
+        <br/>
+    <% } %>
+    
+    <%-- PARTIE 2 : Basse et décroissante (i commence au max et descend) --%>
+    <% for (int i = cpt; i >= 1; i--) { %>
+        <% for (int j = 1; j <= (cpt - i); j++) { %>
+            <%= "&nbsp;&nbsp;" %>
+        <% } %>
+        <% for (int k = 1; k <= i; k++) { %>
+            <%= "*" %>
+        <% } %>
+        <br/>
+    <% } %>
+    </p>
+<% } %>
 
 <h2>Exercice 7 : La table de multiplication</h2>
 <p>Ecrire le code afin de créser une table de multiplication</p>
-<p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>5 x 1 = 5</p>
-<p>5 x 2 = 10</p>
-<p>5 x 3 = 15</p>
-<p>5 x 4 = 20</p>
-<p>5 x 5 = 25</p>
-
+<% if (valeur != null && !valeur.isEmpty()) { %>
+    <p>
+    <%-- Une seule boucle qui compte de 1 jusqu'à cpt --%>
+    <% for (int i = 1; i <= cpt; i++) { %>
+        
+        <%-- On affiche le texte fixe et le résultat du calcul dynamique --%>
+        <%= cpt %> x <%= i %> = <%= cpt * i %>
+        
+        <br/>
+    <% } %>
+    </p>
+<% } %>
 <% } %>
 <p><a href="index.html">Retour au sommaire</a></p>
 </body>
