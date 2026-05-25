@@ -3,51 +3,24 @@ package model;
 
 public class Task {
 
-    private int id;
     private String titre;
     private String description;
-    private String phase;
-    private String lot;
-    private String artisan;
-    private String statut;
-    private String approvisionnement;
-    private String commentaire;
     private String dateEcheance;
-    private boolean terminee;
+    private String statut;
 
     // Constructeur vide
     public Task() {
     }
 
-    // Constructeur complet
-    public Task(int id, String titre, String description, String phase,
-                String lot, String artisan, String statut,
-                String approvisionnement, String commentaire,
-                String dateEcheance, boolean terminee) {
-
-        this.id = id;
+    // Constructeur avec paramètres (optionnel)
+    public Task(String titre, String description, String dateEcheance, String statut) {
         this.titre = titre;
         this.description = description;
-        this.phase = phase;
-        this.lot = lot;
-        this.artisan = artisan;
-        this.statut = statut;
-        this.approvisionnement = approvisionnement;
-        this.commentaire = commentaire;
         this.dateEcheance = dateEcheance;
-        this.terminee = terminee;
+        this.statut = statut;
     }
 
-    // Getters et Setters
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    // Getter / Setter titre
     public String getTitre() {
         return titre;
     }
@@ -56,6 +29,7 @@ public class Task {
         this.titre = titre;
     }
 
+    // Getter / Setter description
     public String getDescription() {
         return description;
     }
@@ -64,54 +38,7 @@ public class Task {
         this.description = description;
     }
 
-    public String getPhase() {
-        return phase;
-    }
-
-    public void setPhase(String phase) {
-        this.phase = phase;
-    }
-
-    public String getLot() {
-        return lot;
-    }
-
-    public void setLot(String lot) {
-        this.lot = lot;
-    }
-
-    public String getArtisan() {
-        return artisan;
-    }
-
-    public void setArtisan(String artisan) {
-        this.artisan = artisan;
-    }
-
-    public String getStatut() {
-        return statut;
-    }
-
-    public void setStatut(String statut) {
-        this.statut = statut;
-    }
-
-    public String getApprovisionnement() {
-        return approvisionnement;
-    }
-
-    public void setApprovisionnement(String approvisionnement) {
-        this.approvisionnement = approvisionnement;
-    }
-
-    public String getCommentaire() {
-        return commentaire;
-    }
-
-    public void setCommentaire(String commentaire) {
-        this.commentaire = commentaire;
-    }
-
+    // Getter / Setter date
     public String getDateEcheance() {
         return dateEcheance;
     }
@@ -120,11 +47,13 @@ public class Task {
         this.dateEcheance = dateEcheance;
     }
 
-    public boolean isTerminee() {
-        return terminee;
+    // Getter / Setter statut
+    public String getStatut() {
+        return statut;
     }
 
-    public void setTerminee(boolean terminee) {
-        this.terminee = terminee;
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 }
+

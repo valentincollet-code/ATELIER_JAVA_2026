@@ -1,4 +1,5 @@
 
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 
 <h2>➕ Ajouter une tâche</h2>
 
-taches.jsp
+<form action="taches.jsp" method="post">
 
     <label>Titre :</label><br>
     <input type="text" name="titre" required><br><br>
