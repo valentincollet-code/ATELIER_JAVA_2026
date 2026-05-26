@@ -6,14 +6,13 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-// Récupérer la liste en session
+// Récupération session
 ArrayList<Task> taches = (ArrayList<Task>) session.getAttribute("taches");
-
 if (taches == null) {
     taches = new ArrayList<Task>();
 }
 
-// ✅ SUPPRESSION
+// ================== SUPPRESSION ==================
 String indexToDelete = request.getParameter("delete");
 if (indexToDelete != null) {
     int index = Integer.parseInt(indexToDelete);
@@ -23,73 +22,107 @@ if (indexToDelete != null) {
     session.setAttribute("taches", taches);
 }
 
-// ✅ MODIFICATION STATUT
+// ================== UPDATE STATUT ==================
 String indexToUpdate = request.getParameter("update");
 String newStatut = request.getParameter("newStatut");
+String newCommentaire = request.getParameter("newCommentaire");
 
 if (indexToUpdate != null && newStatut != null) {
     int index = Integer.parseInt(indexToUpdate);
     if (index >= 0 && index < taches.size()) {
-        taches.get(index).setStatut(newStatut);
+
+        Task taskToUpdate = taches.get(index);
+        taskToUpdate.setStatut(newStatut);
+
+        if ("Problème".equals(newStatut)) {
+            taskToUpdate.setCommentaire(newCommentaire != null ? newCommentaire : "");
+        } else {
+            taskToUpdate.setCommentaire("");
+        }
     }
-    session.setAttribute("taches", taches);
 }
 
-// ✅ RÉCUPÉRATION FORMULAIRE
+// ================== AJOUT ==================
 String titre = request.getParameter("titre");
 String description = request.getParameter("description");
 String dateEcheance = request.getParameter("dateEcheance");
 String statut = request.getParameter("statut");
 
-// ✅ AJOUT TÂCHE
-if (titre != null && description != null && !titre.isEmpty()) {
+if (titre != null && description != null && !titre.trim().isEmpty()) {
+
+    String duree = "";
+
+    if ("Gros oeuvre".equals(titre)) {
+        duree = "14 semaines";
+    } else if ("Second oeuvre".equals(titre)) {
+        duree = "14 semaines";
+    } else if ("Finitions".equals(titre)) {
+        duree = "10 semaines";
+    }
 
     Task t = new Task();
     t.setTitre(titre);
     t.setDescription(description);
     t.setDateEcheance(dateEcheance);
     t.setStatut(statut);
+    t.setDureeEstimee(duree);
+    t.setCommentaire("");
 
     taches.add(t);
-
     session.setAttribute("taches", taches);
 }
 %>
 
 <!DOCTYPE html>
 <html>
-
-
 <head>
-    <meta charset="UTF-8">
-    <title>Liste des tâches</title>
+<meta charset="UTF-8">
+<title>Liste des tâches</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+<style>
+body {
+    font-family: Arial;
+    margin: 20px;
+}
 
-        table {
-            border-collapse: collapse;
-            width: 90%;
-        }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-        td, th {
-            padding: 10px;
-            border: 1px solid black;
-        }
+th, td {
+    border: 1px solid #999;
+    padding: 10px;
+}
 
-        th {
-            background-color: #f2f2f2;
-        }
+th {
+    background-color: #f2f2f2;
+}
 
-        tr:hover {
-            background-color: #f9f9f9;
-        }
-    </style>
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+.badge-attente { color: blue; font-weight: bold; }
+.badge-encours { color: orange; font-weight: bold; }
+.badge-probleme { color: red; font-weight: bold; }
+.badge-termine { color: green; font-weight: bold; }
+</style>
+
+<script>
+function toggleComment(select, index) {
+    const champ = document.getElementById("comment-" + index);
+    if (select.value === "Problème") {
+        champ.style.display = "inline-block";
+    } else {
+        champ.style.display = "none";
+        champ.value = "";
+    }
+}
+</script>
 
 </head>
+
 <body>
 
 <h2>📋 Liste des tâches</h2>
@@ -97,101 +130,87 @@ if (titre != null && description != null && !titre.isEmpty()) {
 <hr>
 
 <% if (taches.isEmpty()) { %>
-    <p>Aucune tâche pour le moment.</p>
+<p>Aucune tâche pour le moment.</p>
 <% } else { %>
 
-<table border="1">
-    <tr>
-        <th>Titre</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Statut</th>
-        <th>Action</th>
-    </tr>
+<table>
+<tr>
+    <th>Phase</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Durée estimée</th>
+    <th>Statut</th>
+    <th>Commentaire</th>
+    <th>Action</th>
+</tr>
 
 <%
 int i = 0;
 for (Task t : taches) {
-    String s = t.getStatut();
+
+String s = t.getStatut();
+String commentaire = t.getCommentaire();
 %>
 
 <tr>
     <td><%= t.getTitre() %></td>
     <td><%= t.getDescription() %></td>
     <td><%= t.getDateEcheance() %></td>
+    <td><%= t.getDureeEstimee() %></td>
 
+    <!-- ✅ STATUT + MODIFICATION -->
+    <td>
 
-<td>
+    <% if ("Terminé".equals(s)) { %>
+        <span class="badge-termine">✅ Terminé</span>
+    <% } else if ("Problème".equals(s)) { %>
+        <span class="badge-probleme">⚠ Problème</span>
+    <% } else if ("En cours".equals(s)) { %>
+        <span class="badge-encours">⏳ En cours</span>
+    <% } else { %>
+        <span class="badge-attente">📌 En attente</span>
+    <% } %>
 
-<!-- ✅ STATUT COLORÉ -->
-<%
+    <br><br>
 
-if ("Terminé".equals(s)) {
-%>
-    <span style="color:green; font-weight:bold;">✅ Terminé</span>
-<%
-} else if ("Problème".equals(s)) {
-%>
-    <span style="color:red; font-weight:bold;">⚠ Problème</span>
-<%
-} else if ("En cours".equals(s)) {
-%>
-    <span style="color:orange; font-weight:bold;">⏳ En cours</span>
-<%
-} else if ("En attente de traitement".equals(s)) {
-%>
-    <span style="color:blue; font-weight:bold;">📌 En attente</span>
-<%
-} else {
-%>
-    <span style="color:gray;">📌 En attente</span>
-<%
-}
-%>
-
-<br>
-
-<!-- ✅ MINI FORMULAIRE PLUS PROPRE -->
-<form action="taches.jsp" method="post" style="margin-top:5px;">
-    <input type="hidden" name="update" value="<%= i %>">
-
-    <select name="newStatut" style="font-size:12px;">
-        <option value="En attente de traitement">En attente</option>
-        <option value="En cours">En cours</option>
-        <option value="Problème">Problème</option>
-        <option value="Terminé">Terminé</option>
-    </select>
-
-    <input type="submit" value="OK" style="font-size:12px;">
-</form>
-
-</td>
-
-
-    <!-- ✅ MODIFIER STATUT -->
     <form action="taches.jsp" method="post">
         <input type="hidden" name="update" value="<%= i %>">
 
-        <select name="newStatut">
+        <select name="newStatut" onchange="toggleComment(this,<%=i%>)">
             <option>En attente de traitement</option>
             <option>En cours</option>
             <option>Problème</option>
             <option>Terminé</option>
         </select>
 
+        <br>
+
+        <input type="text"
+               name="newCommentaire"
+               id="comment-<%=i%>"
+               placeholder="Décrire le problème"
+               value="<%= commentaire != null ? commentaire : "" %>"
+               style="<%= "Problème".equals(s) ? "display:inline-block;" : "display:none;" %>">
+
+        <br>
         <input type="submit" value="Modifier">
     </form>
 
     </td>
 
-    <!-- ✅ SUPPRIMER -->
+    <!-- ✅ AFFICHAGE COMMENTAIRE -->
+    <td>
+        <%= (commentaire != null && !commentaire.trim().isEmpty()) ? commentaire : "-" %>
+    </td>
+
+    <!-- ✅ SUPPRESSION -->
     <td>
         <a href="taches.jsp?delete=<%= i %>">🗑️ Supprimer</a>
     </td>
 </tr>
 
 <%
-    i++;
+i++;
 }
 %>
 
