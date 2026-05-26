@@ -7,20 +7,24 @@ public class Task {
     private String description;
     private String dateEcheance;
     private String statut;
+    private String dureeEstimee;
+    private String commentaire;
 
     // Constructeur vide
     public Task() {
     }
 
-    // Constructeur avec paramètres (optionnel)
-    public Task(String titre, String description, String dateEcheance, String statut) {
+    // Constructeur complet
+    public Task(String titre, String description, String dateEcheance, String statut,
+                String dureeEstimee, String commentaire) {
         this.titre = titre;
         this.description = description;
         this.dateEcheance = dateEcheance;
         this.statut = statut;
+        this.dureeEstimee = dureeEstimee;
+        this.commentaire = commentaire;
     }
 
-    // Getter / Setter titre
     public String getTitre() {
         return titre;
     }
@@ -29,7 +33,6 @@ public class Task {
         this.titre = titre;
     }
 
-    // Getter / Setter description
     public String getDescription() {
         return description;
     }
@@ -38,7 +41,6 @@ public class Task {
         this.description = description;
     }
 
-    // Getter / Setter date
     public String getDateEcheance() {
         return dateEcheance;
     }
@@ -47,7 +49,6 @@ public class Task {
         this.dateEcheance = dateEcheance;
     }
 
-    // Getter / Setter statut
     public String getStatut() {
         return statut;
     }
@@ -55,5 +56,22 @@ public class Task {
     public void setStatut(String statut) {
         this.statut = statut;
     }
+
+    public String getDureeEstimee() {
+        return dureeEstimee;
+    }
+
+    public void setDureeEstimee(String dureeEstimee) {
+        this.dureeEstimee = dureeEstimee;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
 }
+
 
