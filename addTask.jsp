@@ -1,32 +1,10 @@
-
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Ajouter une tâche</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            width: 420px;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-
-        textarea {
-            height: 110px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 
     <script>
         function mettreAJourDescription() {
@@ -54,39 +32,67 @@
 </head>
 <body>
 
-<h2>➕ Ajouter une tâche</h2>
+<div class="page">
 
-<form action="taches.jsp" method="post">
+    <header class="site-header">
+        <div class="logo-wrap">
+            <div class="logo-icon">🧱</div>
 
-    <label for="titre">Phase / Titre :</label><br>
-    <select name="titre" id="titre" onchange="mettreAJourDescription()" required>
-        <option value="">-- Choisir une phase --</option>
-        <option value="Gros oeuvre">Gros oeuvre</option>
-        <option value="Second oeuvre">Second oeuvre</option>
-        <option value="Finitions">Finitions</option>
-    </select><br>
+            <div class="logo-block">
+                <div class="logo-kicker">Nouvelle phase</div>
+                <h1 class="logo-title">Suivi <span>Chantier</span></h1>
+                <div class="logo-line"></div>
+                <p class="logo-subtitle">
+                    Ajout d’une nouvelle tâche de chantier avec description métier automatique.
+                </p>
+            </div>
+        </div>
+    </header>
 
-    <label for="description">Description :</label><br>
-    <!-- ✅ readonly pour éviter modification manuelle -->
-    <textarea name="description" id="description" readonly required></textarea><br>
+    <div class="card">
+        <h3 class="section-title">Nouvelle tâche de chantier</h3>
 
-    <label for="dateEcheance">Date d'échéance :</label><br>
-    <input type="date" name="dateEcheance" id="dateEcheance"><br>
+        <form action="TaskServlet" method="post">
+            <input type="hidden" name="action" value="add">
 
-    <label for="statut">Statut initial :</label><br>
-    <select name="statut" id="statut">
-        <option value="En attente de traitement">En attente de traitement</option>
-        <option value="En cours">En cours</option>
-        <option value="Problème">Problème</option>
-        <option value="Terminé">Terminé</option>
-    </select><br>
+            <label for="titre">Phase / Titre</label>
+            <select name="titre" id="titre" onchange="mettreAJourDescription()" required>
+                <option value="">-- Choisir une phase --</option>
+                <option value="Gros oeuvre">Gros oeuvre</option>
+                <option value="Second oeuvre">Second oeuvre</option>
+                <option value="Finitions">Finitions</option>
+            </select>
 
-    <input type="submit" value="Ajouter la tâche">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" readonly required></textarea>
 
-</form>
+            <div class="grid-2">
+                <div>
+                    <label for="dateEcheance">Date d'échéance</label>
+                    <input type="date" name="dateEcheance" id="dateEcheance">
+                </div>
 
-<br>
-<a href="index.jsp">⬅ Retour accueil</a>
+                <div>
+                    <label for="statut">Statut initial</label>
+                    <select name="statut" id="statut">
+                        <option value="En attente de traitement">En attente de traitement</option>
+                        <option value="En cours">En cours</option>
+                        <option value="Problème">Problème</option>
+                        <option value="Terminé">Terminé</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Ajouter la tâche">
+                <a href="index.jsp" class="btn btn-secondary">⬅ Retour accueil</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
 
 </body>
 </html>
+``
