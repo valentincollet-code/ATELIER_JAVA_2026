@@ -1,8 +1,8 @@
-
 package model;
 
 public class Task {
 
+    private int id;
     private String titre;
     private String description;
     private String dateEcheance;
@@ -10,19 +10,26 @@ public class Task {
     private String dureeEstimee;
     private String commentaire;
 
-    // Constructeur vide
     public Task() {
     }
 
-    // Constructeur complet
-    public Task(String titre, String description, String dateEcheance, String statut,
-                String dureeEstimee, String commentaire) {
+    public Task(int id, String titre, String description, String dateEcheance,
+                String statut, String dureeEstimee, String commentaire) {
+        this.id = id;
         this.titre = titre;
         this.description = description;
         this.dateEcheance = dateEcheance;
         this.statut = statut;
         this.dureeEstimee = dureeEstimee;
         this.commentaire = commentaire;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitre() {
@@ -73,5 +80,3 @@ public class Task {
         this.commentaire = commentaire;
     }
 }
-
-
