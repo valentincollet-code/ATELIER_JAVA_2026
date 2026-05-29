@@ -1,4 +1,4 @@
-#  Suivi Chantier – Mini gestionnaire de tâches collaboratif
+#  Suivi Chantier – Mini gestionnaire de tâches
 
 ## Présentation du projet
 
