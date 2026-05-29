@@ -100,7 +100,7 @@ Dans le dossier apache-tomcat/bin, lancer startup.bat
 Dans un navigateur, ouvrir l'adresse: http://localhost:8080/Valentin
 
 
-Fonctionnement du site
+## Fonctionnement du site
 
 L’application est organisée autour de 3 pages JSP principales et d’une Servlet :
 
@@ -110,7 +110,7 @@ L’application est organisée autour de 3 pages JSP principales et d’une Serv
 - `TaskServlet.java` → traitement des actions (ajout, suppression, mise à jour du statut, chargement des données)
 
 
-Page d’accueil
+### 1. Page d'acceuil
 La page d’accueil permet d’accéder facilement aux deux grandes fonctionnalités :
 
 - Ajouter une tâche
@@ -124,7 +124,7 @@ design plus moderne et ergonomique,
 identité visuelle du site : Suivi Chantier
 
 
-Ajouter une tâche
+### 2. Ajouter une tâche
 La page Ajouter une tâche permet de créer une nouvelle tâche de chantier.
 Champs du formulaire
 1\. Phase / Titre
@@ -135,7 +135,7 @@ Second oeuvre
 Finitions
 
 
-2\. Description automatique
+### Description automatique
 Selon la phase sélectionnée, la description se remplit automatiquement.
 Si l’utilisateur choisit Gros oeuvre
 La description devient automatiquement :
@@ -166,7 +166,7 @@ Menuiseries intérieures
 Installation des équipements
 
 
-3\. Date d’échéance
+### Date d'échéance
 L’utilisateur peut choisir une date prévue pour la tâche.
 
 4\. Statut initial
@@ -178,7 +178,7 @@ Problème
 Terminé
 
 
-5\. Validation
+### Validation
 Quand l’utilisateur clique sur Ajouter la tâche, la tâche est enregistrée dans une ArrayList stockée en session.
 
 Voir les tâches
@@ -210,7 +210,7 @@ Finitions → 10 semaines
 
 Cette colonne permet d’apporter une logique métier plus réaliste au suivi du chantier.
 
-Statut
+### Statut
 Le statut est affiché sous forme visuelle avec code couleur :
 
 En attente de traitement
@@ -242,7 +242,7 @@ intervention bloquée,
 attente d’un artisan.
 
 
-Exemple
+### Exemple
 Si une tâche est passée en statut Problème, l’utilisateur peut écrire :
 
 Retard livraison menuiseries
@@ -274,7 +274,7 @@ nombre de tâches terminées
 
 Cela permet d’avoir une vision globale rapide de l’avancement.
 
-Contraintes du TP respectées
+## Contraintes du TP respectées:
 Le projet respecte les consignes suivantes :
 
 création d’une application web dynamique en Java avec JSP
